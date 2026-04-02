@@ -64,4 +64,23 @@ route.post("/login", async(req, res)=>{
    }catch(error){return res.status(500).json({error:error.message})}
 })
 
+route.get('/stats', async (req, res) => {
+  try {
+    const { count: stuCount } = await db.from("studentsignup").select("*", { count: 'exact', head: true });
+    
+    const { count: teaCount } = await db.from("teachersignup").select("*", { count: 'exact', head: true });
+
+    const { count: admincount } = await db.from("royalsignup").select("*", { count: 'exact', head: true });
+
+    res.json({ 
+      totalStudents: stuCount || 0,
+      totalTeachers: teaCount || 0, 
+      totalAdmin: admincount || 0
+    });
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 module.exports= route;

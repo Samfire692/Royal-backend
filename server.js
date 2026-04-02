@@ -6,10 +6,14 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT
 const auth_routes = require("./router/authrouter");
+const stu_routes = require("./router/studentauthrouter");
+const teach_routes = require("./router/teacherauthrouter");
 
 app.use(cors());
 app.use(express.json());
-app.use('/api/authrouter', auth_routes)
+app.use('/api/authrouter', auth_routes);
+app.use('/api/studentauthrouter', stu_routes);
+app.use("/api/teacherauthrouter", teach_routes);
 
 app.get("/" , (req,res)=> {
     res.send("app running")
