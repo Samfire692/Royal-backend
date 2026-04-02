@@ -9,7 +9,11 @@ const auth_routes = require("./router/authrouter");
 const stu_routes = require("./router/studentauthrouter");
 const teach_routes = require("./router/teacherauthrouter");
 
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:5173", "https://royal-frontend-lime.vercel.app"],
+  credentials: true
+}))
+
 app.use(express.json());
 app.use('/api/authrouter', auth_routes);
 app.use('/api/studentauthrouter', stu_routes);
