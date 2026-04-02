@@ -10,7 +10,7 @@ const stu_routes = require("./router/studentauthrouter");
 const teach_routes = require("./router/teacherauthrouter");
 
 app.use(cors({
-  origin: ["http://localhost:5173", "https://royal-frontend-lime.vercel.app"],
+  origin: ["http://localhost:4000", "https://royal-frontend-lime.vercel.app"],
   credentials: true
 }))
 
